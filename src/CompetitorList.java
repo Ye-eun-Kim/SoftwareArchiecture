@@ -10,6 +10,8 @@ public class CompetitorList {
 
     public void addCompetitor(Competitor competitor) {
         competitors.add(competitor);
+        //System.out.println(competitor.getFullDetails());
+
     }
 
     public void removeCompetitor(int competitorId) {

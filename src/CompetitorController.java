@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -21,7 +22,7 @@ public class CompetitorController {
                 int id = Integer.parseInt(entry[0]);
                 String nameStr = entry[1];
                 Name name = createNameObject(nameStr);
-                Date dateOfBirth = new SimpleDateFormat("dd-MM-yyyy").parse(entry[4]);
+                Date dateOfBirth = new SimpleDateFormat("dd-MM-yyyy").parse(entry[2]);
                 int age = calculateAge(dateOfBirth);
                 String category = entry[3];
                 String email = entry[4];
@@ -43,7 +44,6 @@ public class CompetitorController {
                 competitorList.addCompetitor(competitor);
             } catch (NumberFormatException | ParseException e) {
                 e.printStackTrace();
-                // 오류 처리...
             }
         }
 
@@ -84,7 +84,8 @@ public class CompetitorController {
         double harmonicMean = scores.length / harmonicSum;
         // Normalize the harmonic mean to be within the range of 0 to 5. This step adjusts the score to a standard scale.
         double normalizedScore = normalizeScore(harmonicMean, 0, 10, 0, 5);
-        return normalizedScore;
+        DecimalFormat df = new DecimalFormat("#.#");
+        return Double.parseDouble(df.format(normalizedScore));
     }
 
     private double normalizeScore(double score, double min, double max, double newMin, double newMax) {
