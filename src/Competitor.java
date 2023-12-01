@@ -11,9 +11,9 @@ public class Competitor {
     private String scores;
     private double overallScore;
 
-    public Competitor(int id, Name name, String email, String category, String scores, double overallScore) {
+    public Competitor(int id, int age, Name name, String email, String category, String scores, double overallScore) {
         this.id = id;
-        this.age = 0;
+        this.age = age;
         this.name = name;
         this.email = email;
         this.category = category;
