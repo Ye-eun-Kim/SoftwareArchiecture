@@ -1,15 +1,24 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 
 public class Manager {
 
     private CompetitorController competitorController;
+    private CompetitorList competitorList;
+    private Scanner scanner;
 
-    public Manager(CompetitorController controller) {
+
+    public Manager(CompetitorController controller, CompetitorList competitorList) {
         this.competitorController = controller;
+        this.competitorList = competitorList;
+        this.scanner = new Scanner(System.in);
+
     }
 
     public void readFromFile(String filename){
@@ -31,9 +40,36 @@ public class Manager {
         competitorController.processData(parsedData);
     }
 
+    public void generateReport(String filePath) {
+        Report report = new Report(this.competitorList);
+        String reportContent = report.createReport();
+
+        try (PrintWriter out = new PrintWriter(filePath)) {
+            out.println(reportContent);
+        } catch (IOException e) {
+            System.err.println("Error writing to the file: " + e.getMessage());
+        }
+    }
+
+    public void displayCompetitorDetails() {
+        System.out.println("Enter competitor number: ");
+        int competitorNumber = scanner.nextInt();
+
+        Competitor competitor = competitorList.findCompetitor(competitorNumber);
+        if (competitor != null) {
+            System.out.println(competitor.getShortDetails());
+        } else {
+            System.out.println("No competitor found with number: " + competitorNumber);
+        }
+    }
+
     public static void main(String[] args){
-        CompetitorController controller = new CompetitorController(new CompetitorList());
-        Manager manager = new Manager(controller);
+        CompetitorList competitorList = new CompetitorList();
+        CompetitorController controller = new CompetitorController(competitorList);
+
+        Manager manager = new Manager(controller, competitorList);
         manager.readFromFile("./Competitor.csv");
+        manager.generateReport("./report.txt");
+        manager.displayCompetitorDetails();
     }
 }

@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class CompetitorList {
     private List<Competitor> competitors;
@@ -18,12 +17,55 @@ public class CompetitorList {
         competitors.removeIf(competitor -> competitor.getId() == competitorId);
     }
 
-    public Competitor findCompetitor(int competitorId) {
+    public Competitor findCompetitor(int competitorNumber) {
         for (Competitor competitor : competitors) {
-            if (competitor.getId() == competitorId) {
+            if (competitor.getId() == competitorNumber) {
                 return competitor;
             }
         }
-        return null; // or throw an exception if competitor not found
+        return null;
+    }
+
+    public List<Competitor> getAllCompetitors(){
+        return this.competitors;
+    }
+
+    public Competitor getHighestScoringCompetitor() {
+        return Collections.max(competitors, Comparator.comparing(Competitor::getOverallScore));
+    }
+
+    public double getAverageScore() {
+        if (competitors.isEmpty()) {
+            return 0.0;
+        }
+        double total = 0.0;
+        for (Competitor competitor : competitors) {
+            total += competitor.getOverallScore();
+        }
+        return total / competitors.size();
+    }
+
+    public double getMaxScore() {
+        return competitors.stream()
+                .mapToDouble(Competitor::getOverallScore)
+                .max()
+                .orElse(0.0);
+    }
+
+    public double getMinScore() {
+        return competitors.stream()
+                .mapToDouble(Competitor::getOverallScore)
+                .min()
+                .orElse(0.0);
+    }
+
+    public Map<Integer, Integer> getScoreFrequency() {
+        Map<Integer, Integer> frequency = new HashMap<>();
+        for (Competitor competitor : competitors) {
+            for (int score : competitor.getScoreArray()) {
+                frequency.put(score, frequency.getOrDefault(score, 0) + 1);
+            }
+        }
+        return frequency;
     }
 }
