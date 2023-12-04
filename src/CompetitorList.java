@@ -10,7 +10,7 @@ public class CompetitorList {
 
     public void addCompetitor(Competitor competitor) {
         competitors.add(competitor);
-        //System.out.println(competitor.getFullDetails());
+        System.out.println(competitor.getFullDetails());
 
     }
 

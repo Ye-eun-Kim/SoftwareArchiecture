@@ -26,20 +26,13 @@ public class CompetitorController {
                 int age = calculateAge(dateOfBirth);
                 String category = entry[3];
                 String email = entry[4];
-                String scores = "";
                 int[] scoreValues = new int[4];
                 for (int i = 5; i <= 8; i++) {
                     String score = entry[i];
                     int scoreValue = Integer.valueOf(score);
                     scoreValues[i-5] = scoreValue;
-                    if (i == 5)
-                        scores = score;
-                    else
-                        scores = scores + "," + score;
                 }
-                double overallScore = getOverallScore(scoreValues);
-
-                Competitor competitor = new Competitor(id, age, name, email, category, scores, overallScore );
+                Competitor competitor = new Competitor(id, age, name, email, category, scoreValues);
 
                 competitorList.addCompetitor(competitor);
             } catch (NumberFormatException | ParseException e) {
@@ -67,35 +60,4 @@ public class CompetitorController {
         LocalDate currentDate = LocalDate.now();
         return Period.between(birthDate, currentDate).getYears();
     }
-
-    private double getOverallScore(int[] scores) {
-        if (scores == null || scores.length == 0) {
-            return 0.0;
-        }
-        // Calculate the harmonic sum. Harmonic mean is a type of average which is useful for numbers defined in a range.
-        // It gives less weight to larger numbers and more weight to smaller numbers.
-        double harmonicSum = 0.0;
-        for (int score : scores) {
-            if (score != 0) {
-                harmonicSum += 1.0 / score;
-            }
-        }
-        // Calculate harmonic mean. The harmonic mean is the total number of scores divided by the harmonic sum.
-        double harmonicMean = scores.length / harmonicSum;
-        // Normalize the harmonic mean to be within the range of 0 to 5. This step adjusts the score to a standard scale.
-        double normalizedScore = normalizeScore(harmonicMean, 0, 10, 0, 5);
-        DecimalFormat df = new DecimalFormat("#.#");
-        return Double.parseDouble(df.format(normalizedScore));
-    }
-
-    private double normalizeScore(double score, double min, double max, double newMin, double newMax) {
-        double normalized = (score - min) / (max - min) * (newMax - newMin) + newMin;
-        if (normalized < newMin) {
-            normalized = newMin;
-        } else if (normalized > newMax) {
-            normalized = newMax;
-        }
-        return normalized;
-    }
-
 }
