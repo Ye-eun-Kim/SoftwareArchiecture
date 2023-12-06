@@ -21,21 +21,25 @@ public class Manager {
 
     }
 
-    public void readFromFile(String filename){
+    public void readFromFile(String freestyleFilename, String butterflyFilename){
+        readCompetitors(freestyleFilename);
+        readCompetitors(butterflyFilename);
+    }
+
+    private void readCompetitors(String filename) {
         List<String[]> parsedData = new ArrayList<>();
 
-        try{
+        try {
             FileReader fr = new FileReader(filename);
             BufferedReader br = new BufferedReader(fr);
-            while(br.ready()){
+            while (br.ready()) {
                 String line = br.readLine();
                 String[] data = line.split(",");
                 parsedData.add(data);
             }
             br.close();
-        }
-        catch(IOException e){
-            System.out.println("Not read");
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + filename);
         }
         competitorController.processData(parsedData);
     }
@@ -68,7 +72,7 @@ public class Manager {
         CompetitorController controller = new CompetitorController(competitorList);
 
         Manager manager = new Manager(controller, competitorList);
-        manager.readFromFile("./Competitor.csv");
+        manager.readFromFile("./FreestyleCompetitor.csv", "./ButterflyCompetitor.csv");
         manager.generateReport("./report.txt");
         manager.displayCompetitorDetails();
     }

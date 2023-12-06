@@ -19,19 +19,27 @@ public class CompetitorController {
     public void processData(List<String[]> data) {
         for (String[] entry : data) {
             try {
-                int id = Integer.parseInt(entry[0]);
+                String idStr = entry[0].trim();
+                idStr = idStr.replaceAll("[^\\d]", "");
+                int id = Integer.parseInt(idStr);
+
                 String nameStr = entry[1];
                 Name name = createNameObject(nameStr);
+
                 Date dateOfBirth = new SimpleDateFormat("dd-MM-yyyy").parse(entry[2]);
                 int age = calculateAge(dateOfBirth);
+
                 String category = entry[3];
+
                 String email = entry[4];
+
                 int[] scoreValues = new int[4];
                 for (int i = 5; i <= 8; i++) {
                     String score = entry[i];
                     int scoreValue = Integer.valueOf(score);
                     scoreValues[i-5] = scoreValue;
                 }
+
                 Competitor competitor;
                 if (category.equals("Freestyle")) {
                     competitor = new FreestyleCompetitor(id, age, name, email, scoreValues);

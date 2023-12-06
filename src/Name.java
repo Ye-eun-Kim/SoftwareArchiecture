@@ -14,10 +14,10 @@ public class Name {
         this.lastName = lastName;
     }
     public String getFullName(){
-        if (middleName!= " ") {
-            return firstName+" "+lastName;
+        if (!middleName.equals("")) {
+            return firstName+" "+middleName+" "+lastName;
         }
-        return firstName+" "+middleName+" "+lastName;
+        return firstName+" "+lastName;
     }
     public String getFirstName(){
         return firstName;
