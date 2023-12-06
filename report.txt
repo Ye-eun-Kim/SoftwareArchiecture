@@ -9,7 +9,7 @@ Competitor number: 103, Name: Rinon Grov, Age: 26, Category: Butterfly
 Scores: 1,1,5,7, Overall score: 0.9.
 Competitor number: 104, Name: Mark Leno, Age: 25, Category: Butterfly
 Scores: 5,7,4,2, Overall score: 1.8.
-Competitor number: 105, Name: Harry Patrick, Age: 23, Category: Butterfly
+Competitor number: 105, Name: Harry Patrick, Age: 24, Category: Butterfly
 Scores: 2,6,5,8, Overall score: 2.0.
 Competitor number: 106, Name: Vicy Mathew, Age: 19, Category: Butterfly
 Scores: 6,2,9,5, Overall score: 2.0.

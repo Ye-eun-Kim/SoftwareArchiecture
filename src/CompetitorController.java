@@ -32,8 +32,14 @@ public class CompetitorController {
                     int scoreValue = Integer.valueOf(score);
                     scoreValues[i-5] = scoreValue;
                 }
-                Competitor competitor = new Competitor(id, age, name, email, category, scoreValues);
-
+                Competitor competitor;
+                if (category.equals("Freestyle")) {
+                    competitor = new FreestyleCompetitor(id, age, name, email, scoreValues);
+                } else if (category.equals(("Butterfly"))) {
+                    competitor = new ButterflyCompetitor(id, age, name, email, scoreValues);
+                } else {
+                    competitor = new Competitor(id, age, name, email, category, scoreValues);
+                }
                 competitorList.addCompetitor(competitor);
             } catch (NumberFormatException | ParseException e) {
                 e.printStackTrace();

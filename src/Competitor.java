@@ -17,7 +17,7 @@ public class Competitor {
         this.email = email;
         this.category = category;
         this.scoreArray = scoreArray;
-        this.overallScore = setOverallScore(scoreArray);
+        this.overallScore = getOverallScore(scoreArray);
     }
 
     public int getId() {
@@ -72,31 +72,7 @@ public class Competitor {
         return overallScore;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setName(Name name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public void setScoreArray(int[] scoreArray) {
-        this.scoreArray = scoreArray;
-    }
-
-    public double setOverallScore(int[] scores) {
+    public double getOverallScore(int[] scores) {
         if (scores == null || scores.length == 0) {
             return 0.0;
         }
@@ -126,5 +102,29 @@ public class Competitor {
         return normalized;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setName(Name name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setScoreArray(int[] scoreArray) {
+        this.scoreArray = scoreArray;
+    }
+
+    public void setOverallScore(double overallScore){this.overallScore = overallScore; }
 }
