@@ -67,6 +67,16 @@ public class Manager {
             System.out.println("No competitor found with number: " + competitorNumber);
         }
     }
+//
+//    public static void main(String[] args){
+//        CompetitorList competitorList = new CompetitorList();
+//        CompetitorController controller = new CompetitorController(competitorList);
+//
+//        Manager manager = new Manager(controller, competitorList);
+//        manager.readFromFile("./FreestyleCompetitor.csv", "./ButterflyCompetitor.csv");
+//        manager.generateReport("./report.txt");
+//        manager.displayCompetitorDetails();
+//    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -75,13 +85,12 @@ public class Manager {
                     CompetitorList competitorList = new CompetitorList();
                     CompetitorController controller = new CompetitorController(competitorList);
                     Manager manager = new Manager(controller, competitorList);
-
+                    manager.readFromFile("./FreestyleCompetitor.csv", "./ButterflyCompetitor.csv");
                     new CompetitorManagerGUI(manager, competitorList);
                 } catch (Exception e) {
-                    e.printStackTrace(); // 오류 로깅
+                    e.printStackTrace();
                 }
             }
         });
     }
-
 }
