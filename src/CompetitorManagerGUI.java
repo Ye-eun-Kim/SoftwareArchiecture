@@ -21,12 +21,12 @@ public class CompetitorManagerGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
-        // 패널 추가
+        // add panel
         frame.add(createScorePanel(), BorderLayout.NORTH);
         frame.add(createTablePanel(), BorderLayout.CENTER);
         frame.add(createDetailsPanel(), BorderLayout.SOUTH);
 
-        // 닫기 버튼 추가
+        // add close button
         JButton closeButton = new JButton("Close");
         closeButton.addActionListener(new ActionListener() {
             @Override
@@ -37,7 +37,7 @@ public class CompetitorManagerGUI {
         });
         frame.add(closeButton, BorderLayout.PAGE_END);
 
-        // 창 크기 설정 및 보이기
+        // set window size
         frame.setSize(600, 400);
         frame.setVisible(true);
     }
@@ -66,12 +66,12 @@ public class CompetitorManagerGUI {
                 int id = Integer.parseInt(competitorIdField.getText());
                 Competitor competitor = competitorList.findCompetitor(id);
                 if (competitor != null) {
-                    // scoresField의 텍스트를 분석하여 점수 배열로 변환
+                    // transfer text into score of scoresField
                     int[] updatedScores = parseScores(scoresField.getText());
                     competitor.setScoreArray(updatedScores);
 
-                    // 전체 점수를 재계산하고 결과 표시
-                    double newOverallScore = competitor.getOverallScore(); // 이 메서드는 점수 배열을 기반으로 전체 점수를 계산합니다.
+                    // recalculate total score and represent it
+                    double newOverallScore = competitor.getOverallScore(); // based on score array
                     JOptionPane.showMessageDialog(frame, "Scores updated. New overall score: " + newOverallScore);
                 } else {
                     JOptionPane.showMessageDialog(frame, "Competitor not found.");
@@ -106,7 +106,6 @@ public class CompetitorManagerGUI {
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
         JTable table = new JTable(model);
         panel.add(new JScrollPane(table), BorderLayout.CENTER);
-        // 경쟁자 데이터로 테이블을 채우는 로직 필요
         for (Competitor competitor : competitorList.getAllCompetitors()) {
             model.addRow(new Object[]{competitor.getId(), competitor.getFullName(), competitor.getCategory(), competitor.getOverallScore()});
         }
