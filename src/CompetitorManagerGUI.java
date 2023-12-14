@@ -151,18 +151,4 @@ public class CompetitorManagerGUI {
         return panel;
     }
 
-
-    public static void main(String[] args) {
-        CompetitorList competitorList = new CompetitorList();
-        CompetitorController controller = new CompetitorController(competitorList);
-        Manager manager = new Manager(controller, competitorList);
-
-        // GUI 실행
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new CompetitorManagerGUI(manager, competitorList);
-            }
-        });
-    }
 }

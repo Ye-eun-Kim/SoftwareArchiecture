@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -67,13 +68,20 @@ public class Manager {
         }
     }
 
-    public static void main(String[] args){
-        CompetitorList competitorList = new CompetitorList();
-        CompetitorController controller = new CompetitorController(competitorList);
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    CompetitorList competitorList = new CompetitorList();
+                    CompetitorController controller = new CompetitorController(competitorList);
+                    Manager manager = new Manager(controller, competitorList);
 
-        Manager manager = new Manager(controller, competitorList);
-        manager.readFromFile("./FreestyleCompetitor.csv", "./ButterflyCompetitor.csv");
-        manager.generateReport("./report.txt");
-        manager.displayCompetitorDetails();
+                    new CompetitorManagerGUI(manager, competitorList);
+                } catch (Exception e) {
+                    e.printStackTrace(); // 오류 로깅
+                }
+            }
+        });
     }
+
 }
