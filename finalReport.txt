@@ -1,6 +1,6 @@
 Competitor Details Table:
 Competitor number: 100, Name: Ann Sthen, Age: 23, Category: Freestyle
-Scores: 1,1,1,1, Overall score: 0.5.
+Scores: 5,2,1,9, Overall score: 1.1.
 Competitor number: 102, Name: Kaith Andy Clos, Age: 24, Category: Freestyle
 Scores: 4,7,2,2, Overall score: 1.4.
 Competitor number: 107, Name: Monica Loy, Age: 22, Category: Freestyle
@@ -37,24 +37,24 @@ Competitor number: 117, Name: Patrick Shanon, Age: 26, Category: Butterfly
 Scores: 4,9,9,10, Overall score: 3.5.
 Competitor number: 118, Name: Rod Stod, Age: 25, Category: Butterfly
 Scores: 5,9,2,4, Overall score: 1.9.
-Competitor number: 119, Name: Lijo Willams, Age: 24, Category: Butterfly
+Competitor number: 119, Name: Yejin Kim, Age: 29, Category: Butterfly
 Scores: 6,2,5,8, Overall score: 2.0.
 Highest Scorer:
 Competitor number: 111, Name: Jomon Vicy, Age: 28, Category: Butterfly
 Scores: 6,9,10,9, Overall score: 4.1.
 Summary Statistics:
-Average Score: 2.055
+Average Score: 2.085
 Maximum Score: 4.1
-Minimum Score: 0.5
+Minimum Score: 0.9
 Score Frequency Report:
-Score 1: 7 times
-Score 2: 13 times
+Score 1: 4 times
+Score 2: 14 times
 Score 3: 4 times
 Score 4: 10 times
-Score 5: 12 times
+Score 5: 13 times
 Score 6: 13 times
 Score 7: 7 times
 Score 8: 4 times
-Score 9: 8 times
+Score 9: 9 times
 Score 10: 2 times
 
