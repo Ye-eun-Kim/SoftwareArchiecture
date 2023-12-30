@@ -59,7 +59,7 @@ public class Competitor {
         }
         StringBuilder scores = new StringBuilder();
         for (int score : scoreArray) {
-            if (scores.length() > 0) {
+            if (scores.length() > 0 && scores.length() < 7) {
                 scores.append(",");
             }
             scores.append(score);
@@ -110,8 +110,14 @@ public class Competitor {
         this.age = age;
     }
 
-    public void setName(Name name) {
-        this.name = name;
+    public void setName(String name) {
+        String [] names = name.split(" ");
+        if(names.length == 2){
+            this.name = new Name(names[0], names[1]);
+        }
+        else{
+            this.name = new Name(names[0], names[1], names[3]);
+        }
     }
 
     public void setEmail(String email) {
@@ -124,6 +130,7 @@ public class Competitor {
 
     public void setScoreArray(int[] scoreArray) {
         this.scoreArray = scoreArray;
+        setOverallScore(getOverallScore(scoreArray));
     }
 
     public void setOverallScore(double overallScore){this.overallScore = overallScore; }
