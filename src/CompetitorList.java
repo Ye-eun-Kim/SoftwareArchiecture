@@ -13,9 +13,13 @@ public class CompetitorList {
 
     }
 
-    public void removeCompetitor(int competitorId) {
+    public boolean removeCompetitor(int competitorId) {
+        // If the size of list is changed, return true, which means a competitor deleted
+        int originalSize = competitors.size();
         competitors.removeIf(competitor -> competitor.getId() == competitorId);
+        return competitors.size() < originalSize;
     }
+
 
     public Competitor findCompetitor(int competitorNumber) {
         for (Competitor competitor : competitors) {

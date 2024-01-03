@@ -11,8 +11,11 @@ public class Report {
         StringBuilder reportBuilder = new StringBuilder();
 
         reportBuilder.append(createCompetitorTable());
+        reportBuilder.append("\n----------------------------------\n");
         reportBuilder.append(createHighestScoringCompetitorDetails());
+        reportBuilder.append("\n----------------------------------\n");
         reportBuilder.append(createSummaryStatistics());
+        reportBuilder.append("\n----------------------------------\n");
         reportBuilder.append(createFrequencyReport());
 
         return reportBuilder.toString();

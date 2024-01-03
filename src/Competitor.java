@@ -41,7 +41,8 @@ public class Competitor {
     }
 
     public String getFullDetails(){
-        return "Competitor number: "+id+", Name: "+getFullName()+", Age: "+age+", Category: "+category
+        return "Competitor number: "+id+", Name: "+getFullName()+", Category: "+category
+                +"\nAge: "+age+", Email: " + getEmail()
                 +"\nScores: "+ getScoreString() +", Overall score: "+overallScore+".";
     }
 
@@ -116,7 +117,7 @@ public class Competitor {
             this.name = new Name(names[0], names[1]);
         }
         else{
-            this.name = new Name(names[0], names[1], names[3]);
+            this.name = new Name(names[0], names[1], names[2]);
         }
     }
 
