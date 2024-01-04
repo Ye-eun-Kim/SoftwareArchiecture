@@ -1,7 +1,4 @@
 Competitor Details Table:
-Competitor number: 100, Name: Ann Sthen, Category: Freestyle
-Age: 23, Email: asdf@herts.ac.uk
-Scores: 5,2,1,9, Overall score: 1.1.
 Competitor number: 102, Name: Kaith Andy Clos, Category: Freestyle
 Age: 24, Email: awda@herts.ac.uk
 Scores: 4,7,2,2, Overall score: 1.4.
@@ -68,20 +65,20 @@ Scores: 6,9,10,9, Overall score: 4.1.
 
 ----------------------------------
 Summary Statistics:
-Average Score: 2.085
+Average Score: 2.136842105263158
 Maximum Score: 4.1
 Minimum Score: 0.9
 
 ----------------------------------
 Score Frequency Report:
-Score 1: 4 times
-Score 2: 14 times
+Score 1: 3 times
+Score 2: 13 times
 Score 3: 4 times
 Score 4: 10 times
-Score 5: 13 times
+Score 5: 12 times
 Score 6: 13 times
 Score 7: 7 times
 Score 8: 4 times
-Score 9: 9 times
+Score 9: 8 times
 Score 10: 2 times
 

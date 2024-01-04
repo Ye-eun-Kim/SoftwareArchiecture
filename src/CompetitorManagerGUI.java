@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.List;
 
 import static java.awt.BorderLayout.NORTH;
-import static java.awt.BorderLayout.SOUTH;
+
 
 public class CompetitorManagerGUI {
     private JFrame frame;
